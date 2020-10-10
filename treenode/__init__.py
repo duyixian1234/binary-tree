@@ -1,9 +1,12 @@
+from typing import List, Optional, Union
+
+
 class TreeNode:
-    left: 'TreeNode'
-    right: 'TreeNode'
+    left: Optional['TreeNode']
+    right: Optional['TreeNode']
     val: int
 
-    def __init__(self, val: int, left: 'TreeNode' = None, right: 'TreeNode' = None):
+    def __init__(self, val: int, left: Optional['TreeNode'] = None, right: Optional['TreeNode'] = None):
         self.val = val
         self.left = left
         self.right = right
@@ -17,7 +20,7 @@ class TreeNode:
         return self.val == other.val and self.left == other.left and self.right == other.right
 
 
-def inorderTraverse(root: TreeNode):
+def inorderTraverse(root: Optional[TreeNode]):
     if not root:
         return
     yield from inorderTraverse(root.left)
@@ -25,7 +28,7 @@ def inorderTraverse(root: TreeNode):
     yield from inorderTraverse(root.right)
 
 
-def preorderTraverse(root: TreeNode):
+def preorderTraverse(root: Optional[TreeNode]):
     if not root:
         return
     yield root.val
@@ -33,7 +36,7 @@ def preorderTraverse(root: TreeNode):
     yield from preorderTraverse(root.right)
 
 
-def postorderTraverse(root: TreeNode):
+def postorderTraverse(root: Optional[TreeNode]):
     if not root:
         return
     yield from postorderTraverse(root.left)
@@ -41,7 +44,7 @@ def postorderTraverse(root: TreeNode):
     yield root.val
 
 
-def levelTraverse(root: TreeNode):
+def levelTraverse(root: Optional[TreeNode]):
     level = [root] if root else []
     while level:
         nextLevel = []
@@ -74,8 +77,8 @@ def buildTreeFromInorderPostorder(inorder: list, postorder: list):
     return node
 
 
-def toList(node: TreeNode):
-    ret = []
+def toList(node: Optional[TreeNode]):
+    ret: List[Union[int, str]] = []
     if not node:
         return ret
     stack = [node]
@@ -125,7 +128,7 @@ def fromList(lst: list):
     return root
 
 
-def swapChildren(root: TreeNode):
+def swapChildren(root: Optional[TreeNode]):
     if not root:
         return
     swapChildren(root.left)
