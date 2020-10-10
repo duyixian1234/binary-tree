@@ -28,6 +28,9 @@ jobs:
     - name: Lint with pylint
       run: |
         pipenv run lint
+    - name: Check type
+      run: |
+        pipenv run type
     - name: Test with pytest
       run: |
         pipenv run test
