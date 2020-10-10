@@ -1,0 +1,21 @@
+[[source]]
+name = "pypi"
+url = "https://mirrors.cloud.tencent.com/pypi/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+mypy = "*"
+yapf = "*"
+pytest = "*"
+pytest-cov = "*"
+
+[packages]
+
+[requires]
+python_version = "3.8"
+
+[scripts]
+test = "pipenv run pytest tests -svv --cov=treenode --cov-fail-under=99"
+cov = "pipenv run coverage report -m --fail-under=99"
+lint = "pipenv run pylint treenode"
