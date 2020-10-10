@@ -123,3 +123,11 @@ def fromList(lst: list):
             stack.append(node)
             parent.right = node
     return root
+
+
+def swapChildren(root: TreeNode):
+    if not root:
+        return
+    swapChildren(root.left)
+    swapChildren(root.right)
+    root.left, root.right = root.right, root.left
